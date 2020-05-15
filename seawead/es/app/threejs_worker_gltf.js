@@ -26,9 +26,9 @@ var trackedMatrix = {
 
 var markers = {
     pinball: {
-        width: 1637,
-        height: 2048,
-        dpi: 215,
+        width: 1600,
+        height: 1600,
+        dpi: 200,
         url: "../es/DataNFT/pinball"
     }
 };
@@ -61,7 +61,7 @@ function start( container, marker, video, input_width, input_height, canvas_draw
     // var context_draw = canvas_draw.getContext('2d');
     var renderer = new THREE.WebGLRenderer({
         canvas: canvas_draw,
-        alpha: true,
+       // alpha: true,
         antialias: true
     });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -106,9 +106,9 @@ function start( container, marker, video, input_width, input_height, canvas_draw
         
             model.rotation.x = -270;
         
-            model.rotation.z += 0.5;
+            //model.rotation.z += 0.5;
         
-            model.scale.set(0.3, 0.3, 0.3);
+            model.scale.set(0.5, 0.5, 0.5);
 //        model.scale.set(1, 1, 1);
 
 //            var animation = gltf.animations[0];
