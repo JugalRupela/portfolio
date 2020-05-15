@@ -73,14 +73,7 @@
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         var hint = {
           audio: false,
-          video: {
-                width: { ideal: 480 },
-                height: { ideal: 640 },
-                facingMode:
-                    { exact:
-                        "environment"
-                    }
-                },
+          video: true
         };
 
         if (window.innerWidth < 600) {
