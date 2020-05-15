@@ -76,19 +76,25 @@
           video: true
         };
 
-        if (window.innerWidth < 600) {
-          hint = {
-            audio: false,
-            video: {
-                width: { ideal: 480 },
-                height: { ideal: 640 },
-                facingMode:
-                    { exact:
-                        "environment"
-                    }
-                },
-          };
-        }
+        if( window.innerWidth < 800 ) {
+					var width = ( window.innerWidth < window.innerHeight ) ? 240 : 360;
+					var height = ( window.innerWidth < window.innerHeight ) ? 360 : 240;
+
+					var aspectRatio = window.innerWidth / window.innerHeight;
+
+					console.log( width, height );
+
+					hint = {
+							audio: false,
+							video: {
+									facingMode: 'environment',
+									width: { min: width, max: width }
+							},
+					};
+
+					console.log( hint );
+			}
+
 
         navigator.mediaDevices.getUserMedia(hint).then(function(stream) {
           video.srcObject = stream;
