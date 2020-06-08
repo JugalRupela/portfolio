@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<head>
+<title>WebAR Analytics</title>
+<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-storage.js"></script>
+    
+
+<!--	<script src="../../utils.js"></script>-->
+	<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+    
+</head>
+
+<body>
+	<div id="container" style="width: 75%;">
+		<canvas id="canvas"></canvas>
+	</div>
+
+	<script>
+		
+
+
+		window.onload = function() {
+               var visits_value = 0;
+                var clicks_value = 0;
+                var firebaseConfig = {
+                apiKey: "AIzaSyA6skrB5NZ3MdVloGS4fab2L327Dr9hn6Y",
+                authDomain: "klean-tech.firebaseapp.com",
+                databaseURL: "https://klean-tech.firebaseio.com",
+                projectId: "klean-tech",
+                storageBucket: "klean-tech.appspot.com",
+                messagingSenderId: "921616653844",
+                appId: "1:921616653844:web:8db927cfec483d190b9101"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+
+
+
+                var playersRef = firebase.database().ref();
+
+                   playersRef.on("value", function(data, prevChildKey) {
+                   var newPlayer = data.val();
+
+                   visits_value = newPlayer.visits;
+                   clicks_value = newPlayer.clicks;
+
+                   console.log("visits: " + visits_value);
+                   console.log("clicks: " + clicks_value);
+                       
+                       
+                       
+                    var MONTHS = ['WebAR Analytics'];
+                    var color = Chart.helpers.color;
+                    var barChartData = {
+                        labels: ['WebAR Analytics'],
+                        datasets: [{
+                            label: 'Total Visits',
+                            backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+                            borderColor: window.chartColors.red,
+                            borderWidth: 1,
+                            data: [
+                                visits_value,
+                                0
+                            ]
+                        }, {
+                            label: 'Total Clicks',
+                            backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                            borderColor: window.chartColors.blue,
+                            borderWidth: 1,
+                            data: [
+                                clicks_value,
+                                0
+                            ]
+                        }]
+                        
+		              };
+                       
+                    var ctx = document.getElementById('canvas').getContext('2d');
+                    window.myBar = new Chart(ctx, {
+                        type: 'bar',
+                        data: barChartData,
+                        options: {
+                            responsive: true,
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'WebAR Analytics'
+                            }
+                        }
+                    });
+                    
+                });
+			
+
+		};
+
+
+	</script>
+</body>
+
+</html>
