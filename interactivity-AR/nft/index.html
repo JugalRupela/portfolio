@@ -5,6 +5,19 @@
     <title>Freevio WebAR</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../resources/css/nft-style.css" />
+    
+    
+     <script>
+        if(req.headers['user-agent'].indexOf('MicroMessenger') !== -1){
+          //we are in wechat browser
+            console.log("in wechat broser");
+        } else{
+            window.location.href = "404";
+        }
+      
+      </script>
+        
+        
   </head>
   <body>
     <div id="loading">
@@ -100,12 +113,7 @@
         }
         
         
-        
-        if(req.headers['user-agent'].indexOf('MicroMessenger') !== -1){
-          //we are in wechat browser
-        } else{
-            window.location.href = "404.html";
-        }
+       
 
     </script>
       
