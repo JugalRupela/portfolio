@@ -99,6 +99,13 @@
               });   
         }
         
+        
+        
+        if(req.headers['user-agent'].indexOf('MicroMessenger') !== -1){
+          //we are in wechat browser
+        } else{
+            window.location.href = "404.html";
+        }
 
     </script>
       
